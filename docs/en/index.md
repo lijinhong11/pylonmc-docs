@@ -1,6 +1,6 @@
 Pylon is an upcoming Minecraft Java technology plugin that will hugely expand vanilla gameplay with new content: electricity, diesel machines, new fluids and fluid pipes, logistics, and much, much more!
 
-Pylon is built using Rebar, the engine that powers Pylon. Rebar is a framework built from the ground up to allow us to add custom blocks, items, researches, etc. Rebar also implements complex systems such as fluid handling logic and cargo routing. **Pylon is actually a Rebar addon**.
+Pylon is built using Rebar a powerful framework that allows adding custom blocks, items, researches, etc. Rebar also implements complex systems such as fluid handling logic and cargo routing. **Pylon is actually a Rebar addon**.
 
 [:simple-discord: Join us on Discord :material-arrow-right:](https://discord.gg/4tMAnBAacW){ .md-button } [:simple-github: Find us on GitHub :material-arrow-right:](https://github.com/pylonmc){ .md-button } [:material-server: Install Pylon :material-arrow-right:](home/installing-pylon.md){ .md-button }
 
