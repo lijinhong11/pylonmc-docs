@@ -3,8 +3,8 @@
 ## Default commands
 | Command                            | Permission                               | Description |
 |------------------------------------|------------------------------------------|-------------|
-| `/rb`                              | `Rebar.command.guide`                    | Opens the Rebar guide
-| `/rb guide`                        | `Rebar.command.guide`                    | Gives you the Rebar guide
+| `/rb`                              | `rebar.command.guide`                    | Opens the Rebar guide
+| `/rb guide`                        | `rebar.command.guide`                    | Gives you the Rebar guide
 
 ## Admin commands
 | Command                                          | Permission                               | Description |
@@ -22,9 +22,11 @@
 | `/rb research points set <player> <amount>`      | `rebar.command.research.points.set`      | Sets the number of research points a player has
 | `/rb research points subtract <player> <amount>` | `rebar.command.research.points.subtract` | Removes research points from a player
 | `/rb setblock <x> <y> <z> <block>`               | `rebar.command.setblock`                 | Sets the given Rebar block at the coordinates provided
+| `/py fillfluid`                                  | `pylon.command.fillfluid`                | Fills a held portable fluid tank
+| `/py resetloupedata`                             | `pylon.command.resetloupedata`           | Resets the recorded items/blocks that a player has used the loupe on
 
 ## Other permissions
 | Permission                     | Description |
 |--------------------------------|-------------|
-| `Rebar.guide.cheat`            | Allows you to use drop, ctrl+drop, or middle click to cheat in items from the Rebar guide |
-| `Rebar.guide.view_admin_pages` | Allows you to see admin-only guide pages                                                  |
+| `rebar.guide.cheat`            | Allows you to use drop, ctrl+drop, or middle click to cheat in items from the Rebar guide |
+| `rebar.guide.view_admin_pages` | Allows you to see admin-only guide pages                                                  |
