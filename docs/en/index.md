@@ -108,15 +108,15 @@ Keep reading to find out more.
 
 See the following code to get a feel for how Rebar works:
 
-| Example | Link                                                                                                                                                                                                                                            |
-| ------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Portable dustbin | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java)  |
+| Example | Link                                                                                                                                                                                                                                        |
+| ------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Portable dustbin | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java) |
 | Fireproof rune | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/base/content/tools/FireproofRune.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/FireproofRune.java) |
-| Hammer recipe type | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java)                    |
-| Hammer recipe files | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylon/hammer.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylonbase/hammer.yml)                                                        |
-| Pylon English language file | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml)                                                                                      |
-| Press block | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java)  |
-| Hydraulic excavator settings | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_breaker.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_excavator.yml)                                              |
+| Hammer recipe type | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java)                |
+| Hammer recipe files | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylon/hammer.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylon/hammer.yml)                                                        |
+| Pylon English language file | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml)                                                                                  |
+| Press block | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java) |
+| Hydraulic excavator settings | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_breaker.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_breaker.yml)                                            |
 
 ---
 
