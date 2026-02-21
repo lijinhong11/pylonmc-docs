@@ -80,7 +80,7 @@ Keep reading to find out more.
 ### Stability
 
 - :gear: Easily disable any problematic blocks or items
-- :gear: Rebar will refuse to start if it detects any configuration issues
+- :gear: Rebar or Rebar addons will refuse to start if it detects any configuration issues
 - :gear: Blocks that throw errors will be safely unloaded
 - :gear: Removing addons is safe, with all the data kept intact and restored if the addon is re-added
 - :gear: Rebar data is stored **in the world data itself** - no need to keep extra backups
@@ -97,26 +97,26 @@ Keep reading to find out more.
 
 ### Addon development
 
-- :gear: Rebar has first-class addon support; Pylon is an addon!
-- :gear: Pylon supports addons written in Kotlin
+- :gear: You can add content by writing a Rebar addon
+- :gear: Rebar supports addons written in Kotlin
 - :gear: Blocks, items, recipes, guide pages, fluids, and entities are all easy and intuitive to add
-- :gear: Rebar/Pylon will have extensive high-level documentation on all the features it has to offer
+- :gear: Rebar will have extensive high-level documentation on all the features it has to offer
 
 !!! warning "Currently, addon development is not supported due to how rapidly Pylon is still changing."
 
 ### Examples
 
-See the following code to get a feel for how Rebar/Pylon works:
+See the following code to get a feel for how Rebar works:
 
 | Example | Link |
 | ------- | ---- |
-| Portable dustbin | [https://github.com/pylonmc/pylon-base/blob/master/src/main/java/io/github/pylonmc/pylon/base/content/tools/PortableDustbin.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java) |
-| Fireproof rune | [https://github.com/pylonmc/pylon-base/blob/master/src/main/java/io/github/pylonmc/pylon/base/content/tools/FireproofRune.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/FireproofRune.java) |
-| Hammer recipe type | [https://github.com/pylonmc/pylon-base/blob/master/src/main/java/io/github/pylonmc/pylon/base/recipes/HammerRecipe.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java) |
-| Hammer recipe files | [https://github.com/pylonmc/pylon-base/blob/master/src/main/resources/recipes/pylonbase/hammer.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylonbase/hammer.yml) |
-| Pylon English language file | [https://github.com/pylonmc/pylon-base/blob/master/src/main/resources/lang/en.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml) |
-| Press block | [https://github.com/pylonmc/pylon-base/blob/master/src/main/java/io/github/pylonmc/pylon/base/content/machines/simple/Press.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java) |
-| Hydraulic excavator settings | [https://github.com/pylonmc/pylon-base/blob/master/src/main/resources/settings/hydraulic_excavator.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_excavator.yml) |
+| Portable dustbin | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/PortableDustbin.java) |
+| Fireproof rune | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/base/content/tools/FireproofRune.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/tools/FireproofRune.java) |
+| Hammer recipe type | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/recipes/HammerRecipe.java) |
+| Hammer recipe files | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylonbase/hammer.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/recipes/pylonbase/hammer.yml) |
+| Pylon English language file | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/lang/en.yml) |
+| Press block | [https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java](https://github.com/pylonmc/pylon/blob/master/src/main/java/io/github/pylonmc/pylon/content/machines/simple/Press.java) |
+| Hydraulic excavator settings | [https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_excavator.yml](https://github.com/pylonmc/pylon/blob/master/src/main/resources/settings/hydraulic_excavator.yml) |
 
 ---
 
