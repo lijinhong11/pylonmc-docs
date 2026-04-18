@@ -233,7 +233,7 @@ As you can see, we need to provide three things to set a PDC value: the **key**,
 
 The serializer is just a 'thing' that describes how to convert your type into a more primitive type that can be stored on disk - we won't go into details. You need a serializer for every type that you want to store - so you can't store, for example, `MyAddon` in a persistent data container as there is no serializer for it and it doesn't make sense to create one anyway.
 
-!!! info "You can find a full list of serializers [here](https://pylonmc.github.io/rebar/docs/javadoc/io/github/pylonmc/rebar/datatypes/PylonSerializers.html)"
+!!! info "You can find a full list of serializers [here](https://pylonmc.github.io/rebar/docs/javadoc/io/github/pylonmc/rebar/datatypes/RebarSerializers.html)"
 
 Ok. But what we really need to do is 'top up' the stored xp using the player's experience:
 
@@ -405,13 +405,13 @@ When something like this happens, your first port of call should always be the s
 ```title="console"
 [12:51:22 WARN]: java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because the return value of "io.papermc.paper.persistence.PersistentDataContainerView.get(org.bukkit.NamespacedKey, org.bukkit.persistence.PersistentDataType)" is null
 [12:51:22 WARN]: 	at my-addon-MODIFIED-1757418660070.jar//io.github.pylonmc.myaddon.BaguetteOfWisdom.getPlaceholders(BaguetteOfWisdom.java:28)
-[12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.ItemButton.getItemProvider(ItemButton.kt:47)
+[12:51:22 WARN]: 	at pylon-core-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.ItemButton.getItemProvider(ItemButton.kt:47)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.gui.SlotElement$ItemSlotElement.getItemStack(SlotElement.java:44)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow.redrawItem(AbstractWindow.java:109)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractSingleWindow.initItems(AbstractSingleWindow.java:58)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow.open(AbstractWindow.java:279)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow$AbstractBuilder.open(AbstractWindow.java:679)
-[12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.pages.base.GuidePage.open(GuidePage.kt:28)
+[12:51:22 WARN]: 	at pylon-core-0.11.2.jar//io.github.pylonmc.pylon.core.guide.pages.base.GuidePage.open(GuidePage.kt:28)
 [12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.PageButton.handleClick(PageButton.kt:38)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.gui.AbstractGui.handleClick(AbstractGui.java:95)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractSingleWindow.handleClick(AbstractSingleWindow.java:84)
