@@ -27,25 +27,25 @@ You know the drill by now:
 === "Java"
     ```java title="MyAddon.java"
     NamespacedKey baguetteOfWisdomKey = new NamespacedKey(this, "baguette_of_wisdom");
-    ItemStack baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    ItemStack baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
             .build();
-    PylonItem.register(BaguetteOfWisdom.class, baguetteOfWisdom);
-    BasePages.FOOD.addItem(baguetteOfWisdomKey);
+    RebarItem.register(BaguetteOfWisdom.class, baguetteOfWisdom);
+    PylonPages.FOOD.addItem(baguetteOfWisdomKey);
     ```
 === "Kotlin"
     ```kotlin title="MyAddon.kt"
     val baguetteOfWisdomKey = NamespacedKey(this, "baguette_of_wisdom")
-    val baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    val baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
         .build()
-    PylonItem.register<BaguetteOfWisdom>(baguetteOfWisdom)
-    BasePages.FOOD.addItem(baguetteOfWisdomKey)
+    RebarItem.register<BaguetteOfWisdom>(baguetteOfWisdom)
+    PylonPages.FOOD.addItem(baguetteOfWisdomKey)
     ```
 
 <span></span>
 
 === "Java"
     ```java title="BaguetteOfWisdom.java"
-    public class BaguetteOfWisdom extends PylonItem {
+    public class BaguetteOfWisdom extends RebarItem {
         public BaguetteOfWisdom(@NotNull ItemStack stack) {
             super(stack);
         }
@@ -53,7 +53,7 @@ You know the drill by now:
     ```
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack)
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack)
     ```
 
 ```yaml title="en.yml"
@@ -70,7 +70,7 @@ Now, let's add a config value for the max XP capacity:
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="2"
-    public class BaguetteOfWisdom extends PylonItem {
+    public class BaguetteOfWisdom extends RebarItem {
         private final int xpCapacity = getSettings().getOrThrow("xp-capacity", ConfigAdapter.INT);
     
         public BaguetteOfWisdom(@NotNull ItemStack stack) {
@@ -80,7 +80,7 @@ Now, let's add a config value for the max XP capacity:
     ```
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="2"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack) {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack) {
         private val xpCapacity: Int = settings.getOrThrow("xp-capacity", ConfigAdapter.INT)
     }
     ```
@@ -109,7 +109,7 @@ item:
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="8-14"
-    public class BaguetteOfWisdom extends PylonItem {
+    public class BaguetteOfWisdom extends RebarItem {
         private final int xpCapacity = getSettings().getOrThrow("xp-capacity", ConfigAdapter.INT);
     
         public BaguetteOfWisdom(@NotNull ItemStack stack) {
@@ -117,9 +117,9 @@ item:
         }
     
         @Override
-        public @NotNull List<PylonArgument> getPlaceholders() {
+        public @NotNull List<RebarArgument> getPlaceholders() {
             return List.of(
-                    PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
+                    RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
                     // TODO add stored_xp placeholder
             );
         }
@@ -127,11 +127,11 @@ item:
     ```
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="4-7"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack) {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack) {
         private val xpCapacity: Int = settings.getOrThrow("xp-capacity", ConfigAdapter.class)
 
         override fun getPlaceholders() = listOf(
-            PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
+            RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
             // TODO add stored_xp placeholder
         )
     }
@@ -143,11 +143,11 @@ All of this should be familiar from the [advanced lore] section.
 
 Next, let's allow the player to charge by right clicking, and discharge by shift right clicking.
 
-We can use the [PylonInteractor] class to do this:
+We can use the [RebarInteractor] class to do this:
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="1 16-23"
-    public class BaguetteOfWisdom extends PylonItem implements PylonInteractor {
+    public class BaguetteOfWisdom extends RebarItem implements RebarInteractor {
         private final int xpCapacity = getSettings().getOrThrow("xp-capacity", ConfigAdapter.INT);
     
         public BaguetteOfWisdom(@NotNull ItemStack stack) {
@@ -155,9 +155,9 @@ We can use the [PylonInteractor] class to do this:
         }
     
         @Override
-        public @NotNull List<PylonArgument> getPlaceholders() {
+        public @NotNull List<RebarArgument> getPlaceholders() {
             return List.of(
-                    PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
+                    RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
                     // TODO add stored_xp placeholder
             );
         }
@@ -175,11 +175,11 @@ We can use the [PylonInteractor] class to do this:
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="1 9-15"
     
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack), PylonInteractor {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack), RebarInteractor {
         private val xpCapacity: Int = settings.getOrThrow("xp-capacity", ConfigAdapter.class)
 
         override fun getPlaceholders() = listOf(
-            PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
+            RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity))
             // TODO add stored_xp placeholder
         )
 
@@ -233,7 +233,7 @@ As you can see, we need to provide three things to set a PDC value: the **key**,
 
 The serializer is just a 'thing' that describes how to convert your type into a more primitive type that can be stored on disk - we won't go into details. You need a serializer for every type that you want to store - so you can't store, for example, `MyAddon` in a persistent data container as there is no serializer for it and it doesn't make sense to create one anyway.
 
-!!! info "You can find a full list of serializers [here](https://pylonmc.github.io/pylon-core/docs/javadoc/io/github/pylonmc/pylon/core/datatypes/PylonSerializers.html)"
+!!! info "You can find a full list of serializers [here](https://pylonmc.github.io/rebar/docs/javadoc/io/github/pylonmc/rebar/datatypes/PylonSerializers.html)"
 
 Ok. But what we really need to do is 'top up' the stored xp using the player's experience:
 
@@ -365,10 +365,10 @@ Finally, let's add in the placeholder for the stored charge:
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="5-10"
     @Override
-    public @NotNull List<PylonArgument> getPlaceholders() {
+    public @NotNull List<RebarArgument> getPlaceholders() {
         return List.of(
-                PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
-                PylonArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(
+                RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
+                RebarArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(
                         getStack().getPersistentDataContainer().get(
                                 new NamespacedKey(MyAddon.getInstance(), "stored_xp"),
                                 PylonSerializers.INTEGER
@@ -380,8 +380,8 @@ Finally, let's add in the placeholder for the stored charge:
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="3-8"
     override fun getPlaceholders() = listOf(
-        PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
-        PylonArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(
+        RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
+        RebarArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(
             stack.persistentDataContainer.get(
                 NamespacedKey(MyAddon.instance, "stored_xp"),
                 PylonSerializers.INTEGER
@@ -405,14 +405,14 @@ When something like this happens, your first port of call should always be the s
 ```title="console"
 [12:51:22 WARN]: java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because the return value of "io.papermc.paper.persistence.PersistentDataContainerView.get(org.bukkit.NamespacedKey, org.bukkit.persistence.PersistentDataType)" is null
 [12:51:22 WARN]: 	at my-addon-MODIFIED-1757418660070.jar//io.github.pylonmc.myaddon.BaguetteOfWisdom.getPlaceholders(BaguetteOfWisdom.java:28)
-[12:51:22 WARN]: 	at pylon-core-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.ItemButton.getItemProvider(ItemButton.kt:47)
+[12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.ItemButton.getItemProvider(ItemButton.kt:47)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.gui.SlotElement$ItemSlotElement.getItemStack(SlotElement.java:44)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow.redrawItem(AbstractWindow.java:109)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractSingleWindow.initItems(AbstractSingleWindow.java:58)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow.open(AbstractWindow.java:279)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow$AbstractBuilder.open(AbstractWindow.java:679)
-[12:51:22 WARN]: 	at pylon-core-0.11.2.jar//io.github.pylonmc.pylon.core.guide.pages.base.GuidePage.open(GuidePage.kt:28)
-[12:51:22 WARN]: 	at pylon-core-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.PageButton.handleClick(PageButton.kt:38)
+[12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.pages.base.GuidePage.open(GuidePage.kt:28)
+[12:51:22 WARN]: 	at rebar-0.11.2.jar//io.github.pylonmc.pylon.core.guide.button.PageButton.handleClick(PageButton.kt:38)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.gui.AbstractGui.handleClick(AbstractGui.java:95)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractSingleWindow.handleClick(AbstractSingleWindow.java:84)
 [12:51:22 WARN]: 	at xyz.xenondevs.invui.window.AbstractWindow.handleClickEvent(AbstractWindow.java:199)
@@ -454,7 +454,7 @@ So it looks like the error occurred on line 28, in the `getPlaceholders` functio
     Simply put, the guide also needs to call `getPlaceholders` to display the item to you. The error only appears once you open the guide - or once you give yourself the item with `/py give`.
 
 !!! Note "Kotlin - null safety"
-    If you've been following along in Kotlin, you may have noticed that your error is different from the one above. Additionally, if you played around with the code a bit, you may have noticed that the Kotlin code refuses to compile unless you add a `!!` after the call to `get(...)` in the `getPlaceholders` function. This is because Kotlin actually tracks nulls in the type system, and will error during compile time instead of run time if you try to use a potentially null value without checking for null first. The `!!` tells the compiler, "hey, I know what I'm doing, this value will never be null." This is one of the advantages of using Kotlin over Java, as it can help catch potential null pointer exceptions before they even happen, and is one of the reasons why Pylon Core is written in Kotlin. In this situation, an Elvis operator (`?:`) or a call to `getOrDefault` would have been more appropriate, but for the purposes of this tutorial, we will leave it as is.
+    If you've been following along in Kotlin, you may have noticed that your error is different from the one above. Additionally, if you played around with the code a bit, you may have noticed that the Kotlin code refuses to compile unless you add a `!!` after the call to `get(...)` in the `getPlaceholders` function. This is because Kotlin actually tracks nulls in the type system, and will error during compile time instead of run time if you try to use a potentially null value without checking for null first. The `!!` tells the compiler, "hey, I know what I'm doing, this value will never be null." This is one of the advantages of using Kotlin over Java, as it can help catch potential null pointer exceptions before they even happen, and is one of the reasons why Rebar is written in Kotlin. In this situation, an Elvis operator (`?:`) or a call to `getOrDefault` would have been more appropriate, but for the purposes of this tutorial, we will leave it as is.
 
 This actually makes perfect sense if you think about it. At no point do we set a default value for the stored XP, so of course any call to get it will return null.
 
@@ -465,20 +465,20 @@ To add a default value for stored XP to the PDC, we can modify the itemstack its
 === "Java"
     ```java title="MyAddon.java" hl_lines="3-7"
     NamespacedKey baguetteOfWisdomKey = new NamespacedKey(this, "baguette_of_wisdom");
-    ItemStack baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    ItemStack baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
             .editPdc(pdc -> pdc.set(
                     new NamespacedKey(this, "stored_xp"),
                     PylonSerializers.INTEGER,
                     0
             ))
             .build();
-    PylonItem.register(BaguetteOfWisdom.class, baguetteOfWisdom);
-    BasePages.FOOD.addItem(baguetteOfWisdomKey);
+    RebarItem.register(BaguetteOfWisdom.class, baguetteOfWisdom);
+    PylonPages.FOOD.addItem(baguetteOfWisdomKey);
     ```
 === "Kotlin"
     ```kotlin title="MyAddon.kt" hl_lines="3-9"
     val baguetteOfWisdomKey = NamespacedKey(this, "baguette_of_wisdom")
-    val baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    val baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
         .editPdc { pdc ->
             pdc.set(
                 NamespacedKey(this, "stored_xp"),
@@ -487,8 +487,8 @@ To add a default value for stored XP to the PDC, we can modify the itemstack its
             )
         }
         .build()
-    PylonItem.register<BaguetteOfWisdom>(baguetteOfWisdom)
-    BasePages.FOOD.addItem(baguetteOfWisdomKey)
+    RebarItem.register<BaguetteOfWisdom>(baguetteOfWisdom)
+    PylonPages.FOOD.addItem(baguetteOfWisdomKey)
     ```
 
 Now let's try again.
@@ -507,7 +507,7 @@ First, we could pull out the get/set code into their own functions:
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="4-10 12-17"
-    public class BaguetteOfWisdom extends PylonItem implements PylonInteractor {
+    public class BaguetteOfWisdom extends RebarItem implements RebarInteractor {
         ...
     
         public void setStoredXp(int xp) {
@@ -528,7 +528,7 @@ First, we could pull out the get/set code into their own functions:
     ```
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="4-17"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack), PylonInteractor {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack), RebarInteractor {
         ...
 
         var storedXp: Int
@@ -552,7 +552,7 @@ First, we could pull out the get/set code into their own functions:
         Alternatively, Pylon provides a property delegate for persistent data values that can be used to simplify this even further:
         
         ```kotlin title="BaguetteOfWisdom.kt" hl_lines="4-8"
-        class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack), PylonInteractor {
+        class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack), RebarInteractor {
             ...
     
             var storedXp: Int by persistentData(
@@ -567,15 +567,15 @@ And now, we can use these functions in the rest of the code, which is much clean
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="9 17 23 26 36"
-    public class BaguetteOfWisdom extends PylonItem implements PylonInteractor {
+    public class BaguetteOfWisdom extends RebarItem implements RebarInteractor {
     
         ...
     
         @Override
-        public @NotNull List<PylonArgument> getPlaceholders() {
+        public @NotNull List<RebarArgument> getPlaceholders() {
             return List.of(
-                    PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
-                    PylonArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(getStoredXp()))
+                    RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
+                    RebarArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(getStoredXp()))
             );
         }
     
@@ -612,13 +612,13 @@ And now, we can use these functions in the rest of the code, which is much clean
 === "Kotlin"
     
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="7 13 19 22 32"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack), PylonInteractor {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack), RebarInteractor {
     
         ...
     
         override fun getPlaceholders() = listOf(
-            PylonArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
-            PylonArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(storedXp))
+            RebarArgument.of("xp_capacity", UnitFormat.EXPERIENCE.format(xpCapacity)),
+            RebarArgument.of("stored_xp", UnitFormat.EXPERIENCE.format(storedXp))
         )
     
         override fun onUsedToRightClick(event: PlayerInteractEvent) {
@@ -655,7 +655,7 @@ The second thing we should do is reuse NamespacedKeys. This is more of a 'best p
 
 === "Java"
     ```java title="BaguetteOfWisdom.java" hl_lines="2 8 16"
-    public class BaguetteOfWisdom extends PylonItem implements PylonInteractor {
+    public class BaguetteOfWisdom extends RebarItem implements RebarInteractor {
         public static final NamespacedKey STORED_XP_KEY = new NamespacedKey(MyAddon.getInstance(), "stored_xp");
     
         ...
@@ -677,7 +677,7 @@ The second thing we should do is reuse NamespacedKeys. This is more of a 'best p
     ```
 === "Kotlin"
     ```kotlin title="BaguetteOfWisdom.kt" hl_lines="2-4 10 16"
-    class BaguetteOfWisdom(stack: ItemStack) : PylonItem(stack), PylonInteractor {
+    class BaguetteOfWisdom(stack: ItemStack) : RebarItem(stack), RebarInteractor {
         companion object {
             val STORED_XP_KEY = NamespacedKey(MyAddon.instance, "stored_xp")
         }
@@ -704,7 +704,7 @@ The second thing we should do is reuse NamespacedKeys. This is more of a 'best p
 
 === "Java"
     ```java title="MyAddon.java" hl_lines="3"
-    ItemStack baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    ItemStack baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
             .editPdc(pdc -> pdc.set(
                     BaguetteOfWisdom.STORED_XP_KEY,
                     PylonSerializers.INTEGER,
@@ -714,7 +714,7 @@ The second thing we should do is reuse NamespacedKeys. This is more of a 'best p
     ```
 === "Kotlin"
     ```kotlin title="MyAddon.kt" hl_lines="4"
-    val baguetteOfWisdom = ItemStackBuilder.pylonItem(Material.BREAD, baguetteOfWisdomKey)
+    val baguetteOfWisdom = ItemStackBuilder.rebar(Material.BREAD, baguetteOfWisdomKey)
         .editPdc { pdc ->
             pdc.set(
                 BaguetteOfWisdom.STORED_XP_KEY,
@@ -727,7 +727,7 @@ The second thing we should do is reuse NamespacedKeys. This is more of a 'best p
 
 And that's it!
 
-[PlayerInteractEntityEvent]: https://jd.papermc.io/paper/1.21.8/org/bukkit/event/player/PlayerInteractEntityEvent.html
-[PylonItemEntityInteractor]: https://pylonmc.github.io/pylon-core/docs/javadoc/io/github/pylonmc/pylon/core/item/base/PylonItemEntityInteractor.html
+[PlayerInteractEntityEvent]: https://jd.papermc.io/paper/1.21.11/org/bukkit/event/player/PlayerInteractEntityEvent.html
+[RebarItemEntityInteractor]: https://pylonmc.github.io/rebar/docs/javadoc/io/github/pylonmc/rebar/item/base/RebarItemEntityInteractor.html
 [Persistent data container]: https://docs.papermc.io/paper/dev/pdc/
-[PylonInteractor]: https://pylonmc.github.io/pylon-core/docs/javadoc/io/github/pylonmc/pylon/core/item/base/PylonInteractor.html
+[RebarInteractor]: https://pylonmc.github.io/rebar/docs/javadoc/io/github/pylonmc/rebar/item/base/RebarInteractor.html
