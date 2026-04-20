@@ -1,7 +1,4 @@
-# Recipe Autocompletion
-
-`AUTHOR: Vaan1310`
-`HAS CONTEXT: Vaan1310`
+!!! abstract "Author: Vaan1310"
 
 In order to not have pylon items autocomplete into vanilla recipes, we have to use NMS and override 2 behaviours:
 - Item movement to crafting table
@@ -19,8 +16,8 @@ As many other functionalities depend on the recipe book, we only consider the ca
 
 `HandlerRecipeBookClick#handlePylonItemPlacement` method should handle how placement takes place, we have a method, but normally it is handled by a method in `AbstractCraftingMenu`, so we need to use reflection to call some stuff around to simulate normal behaviour and just change what we need.
 
-> [!NOTE]
-> To optimize most of the calls here, everything uses method handles, these methods might be called a lot of times, so they have to be performant
+!!! note
+    To optimize most of the calls here, everything uses method handles, these methods might be called a lot of times, so they have to be performant
 
 `ServerPlaceRecipe` handles the core logic for moving items and accounting them, however most of it is private, that is why we create our own version, that delegates most behaviour to the NMS class.
 
@@ -28,10 +25,10 @@ After following a chain of private method calls which, of course, we cannot over
 
 The objective is to exclude from `ItemOrExact.Item` matches our pylon items. 
 
-> [!NOTE]
-> Minecraft matches items in 2 ways: 
-> - ItemOrExact.Item (which is Material based matching), 
-> - ItemOrExact.Exact (pdc and component, perfect matching).
+!!! note
+    Minecraft matches items in 2 ways: 
+    - ItemOrExact.Item (which is Material based matching), 
+    - ItemOrExact.Exact (pdc and component, perfect matching).
 
 ## Fix the accounting logic
 
